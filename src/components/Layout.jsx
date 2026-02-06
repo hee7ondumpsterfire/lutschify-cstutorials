@@ -12,8 +12,8 @@ const Layout = () => {
             <header className="main-header glass-panel">
                 <div className="container header-content">
                     <Link to="/" className="brand">
-                        <span className="brand-icon">☁️</span>
-                        lutsch<span className="highlight">1fy</span>
+                        <img src="/favicon.png" alt="lutsch1fy" className="brand-icon" style={{ height: '32px', width: '32px', marginRight: '0.5rem' }} />
+                        lutsch1fy
                     </Link>
 
                     <nav className="main-nav">

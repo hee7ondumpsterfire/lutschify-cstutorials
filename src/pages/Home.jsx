@@ -63,9 +63,9 @@ const Home = () => {
                 {/* Right Sidebar */}
                 <div className="csnades-sidebar">
                     <div className="sidebar-section">
-                        <h3>Welcome to lutsch1fy, the #1 place to learn Counter-Strike 2 grenade lineups.</h3>
+                        <h3>Welcome to lutschify, the #2 place to learn Counter Strike 2 grenade lineups and become a respected carry player.</h3>
                         <p className="sidebar-text">
-                            Read our guides and view {tutorials?.length || 0} video tutorials for smokes, molotovs, flashbangs, and HE grenades.
+                            If you want to make sure your window smoke on mirage is on point without risking your mates to peek - this is your place to be.
                         </p>
 
                         <div className="sidebar-links">
