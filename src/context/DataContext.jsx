@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { tutorials as initialTutorials } from '../data/grenades';
 import { guides as initialGuides } from '../data/guides';
+import { eloRanges as initialEloGuides } from '../data/eloGuides';
 
 const DataContext = createContext();
 
@@ -9,6 +10,7 @@ export const useData = () => useContext(DataContext);
 export const DataProvider = ({ children }) => {
     const [tutorials, setTutorials] = useState([]);
     const [guides, setGuides] = useState([]);
+    const [eloGuides, setEloGuides] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -35,9 +37,11 @@ export const DataProvider = ({ children }) => {
 
                 setTutorials(parsed.tutorials || parsed); // Handle migration if needed
                 setGuides(parsed.guides || initialGuides);
+                setEloGuides(parsed.eloGuides || initialEloGuides);
             } else {
                 setTutorials(initialTutorials);
                 setGuides(initialGuides);
+                setEloGuides(initialEloGuides);
             }
         } catch (e) {
             console.error("Failed to load data", e);
@@ -46,14 +50,16 @@ export const DataProvider = ({ children }) => {
         setIsLoading(false);
     };
 
-    const saveToStorage = (newTutorials, newGuides) => {
+    const saveToStorage = (newTutorials, newGuides, newEloGuides) => {
         const payload = {
             tutorials: newTutorials || tutorials,
-            guides: newGuides || guides
+            guides: newGuides || guides,
+            eloGuides: newEloGuides || eloGuides
         };
         localStorage.setItem('lutsch1fy_data', JSON.stringify(payload));
         if (newTutorials) setTutorials(newTutorials);
         if (newGuides) setGuides(newGuides);
+        if (newEloGuides) setEloGuides(newEloGuides);
     };
 
     const addTutorial = (tutorial) => {
@@ -82,7 +88,12 @@ export const DataProvider = ({ children }) => {
         } else {
             newGuides = [...guides, { ...guide, id: crypto.randomUUID() }];
         }
-        saveToStorage(null, newGuides);
+        saveToStorage(null, newGuides, null);
+    };
+
+    const updateEloGuide = (eloGuide) => {
+        const newEloGuides = eloGuides.map(g => g.id === eloGuide.id ? eloGuide : g);
+        saveToStorage(null, null, newEloGuides);
     };
 
     const resetData = () => {
@@ -100,6 +111,8 @@ export const DataProvider = ({ children }) => {
             updateTutorial,
             deleteTutorial,
             addGuide,
+            eloGuides,
+            updateEloGuide,
             resetData,
             isLoading
         }}>

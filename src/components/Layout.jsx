@@ -29,6 +29,18 @@ const Layout = () => {
                         >
                             Training
                         </Link>
+                        <Link
+                            to="/sprays"
+                            className={`nav-link ${location.pathname.startsWith('/sprays') ? 'active' : ''}`}
+                        >
+                            Recoil
+                        </Link>
+                        <Link
+                            to="/become-pro"
+                            className={`nav-link ${location.pathname.startsWith('/become-pro') ? 'active' : ''}`}
+                        >
+                            Become Pro
+                        </Link>
                         {isAdmin && (
                             <Link
                                 to="/admin"

@@ -5,9 +5,10 @@ import Home from './pages/Home';
 import Training from './pages/Training';
 import MapDetail from './pages/MapDetail';
 import Admin from './pages/Admin';
-
 import GuideDetail from './pages/GuideDetail';
 import GrenadeForm from './components/GrenadeForm';
+import SprayPatterns from './pages/SprayPatterns';
+import BecomePro from './pages/BecomePro';
 
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
@@ -21,7 +22,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path="training" element={<Training />} />
             <Route path="training/:mapId" element={<MapDetail />} />
-            <Route path="guides/:mapId" element={<GuideDetail />} />
+            <Route path="sprays" element={<SprayPatterns />} />
+            <Route path="become-pro" element={<BecomePro />} />
             <Route path="guides/:mapId" element={<GuideDetail />} />
             <Route path="admin" element={<Admin />} />
             <Route path="admin/grenade/add/:mapId" element={<GrenadeForm />} />
