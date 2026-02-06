@@ -1,0 +1,75 @@
+.map-pins-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through to map if needed, but pins have pointer-events: auto */
+    z-index: 10;
+}
+
+.map-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(30, 30, 35, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    font-size: 14px;
+}
+
+.map-pin:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 15px currentColor;
+    z-index: 20;
+}
+
+/* Pin Colors by Type */
+.pin-smoke {
+    color: var(--smoke-color);
+    border-color: var(--smoke-color);
+}
+
+.pin-flash {
+    color: var(--flash-color);
+    border-color: var(--flash-color);
+}
+
+.pin-molotov {
+    color: var(--molotov-color);
+    border-color: var(--molotov-color);
+}
+
+.pin-he {
+    color: var(--he-color);
+    border-color: var(--he-color);
+}
+
+/* Pulse animation for pins */
+@keyframes pulse-pin {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.map-pin:hover {
+    animation: pulse-pin 2s infinite;
+}

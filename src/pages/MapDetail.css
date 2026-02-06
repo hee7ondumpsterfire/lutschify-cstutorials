@@ -1,0 +1,146 @@
+.map-hero {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.map-hero-content h1 {
+    font-size: 3.5rem;
+    margin-top: 0.5rem;
+}
+
+.back-link {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: var(--accent-primary);
+}
+
+.tutorials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+}
+
+.map-interactive-container {
+    margin-top: -3rem;
+    /* Overlap with hero slightly */
+    position: relative;
+    z-index: 10;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.map-radar-wrapper {
+    position: relative;
+    width: 600px;
+    /* Fixed width for consistency */
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    /* Square radar usually */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0f1014;
+}
+
+.map-radar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Ensure full map is visible */
+    background: #1a1b21;
+}
+
+@media (max-width: 768px) {
+    .map-radar-wrapper {
+        width: 100%;
+        /* Full width directly on mobile */
+        border-radius: 0;
+        /* no rounded corners on full width */
+        border-left: none;
+        border-right: none;
+    }
+
+    .map-interactive-container {
+        margin-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.favorites-toggle-container {
+    margin-bottom: 1.5rem;
+    display: flex;
+    padding: 0 0.5rem;
+}
+
+.favorites-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    user-select: none;
+}
+
+.favorites-toggle input {
+    accent-color: var(--accent-primary);
+    width: 16px;
+    height: 16px;
+}
+
+.favorites-toggle:hover {
+    color: var(--text-primary);
+}
+
+.fab-add-btn {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: black;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 208, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.fab-add-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .fab-add-btn {
+        right: 1rem;
+        bottom: 1rem;
+        position: fixed;
+        /* Fixed on mobile for easier access */
+    }
+}

@@ -1,0 +1,111 @@
+.tutorial-card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.tutorial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tutorial-thumbnail {
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+}
+
+.tutorial-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.tutorial-card:hover .tutorial-thumbnail img {
+    transform: scale(1.05);
+}
+
+.side-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+}
+
+.side-t {
+    background-color: #dfae49;
+    /* T Color */
+}
+
+.side-ct {
+    background-color: #5d79ae;
+    /* CT Color */
+}
+
+.tutorial-info {
+    padding: 1rem;
+}
+
+.tutorial-info h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.tutorial-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.difficulty {
+    font-weight: 600;
+}
+
+.difficulty-easy {
+    color: #4ade80;
+}
+
+.difficulty-medium {
+    color: #fbbf24;
+}
+
+.difficulty-hard {
+    color: #f87171;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.side-badge {
+    /* Adjust side badge position to not overlap with favorite button */
+    right: 50px;
+}

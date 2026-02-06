@@ -1,0 +1,123 @@
+.guide-hero {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.guide-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.guide-meta {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.guide-content-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    padding-bottom: 4rem;
+}
+
+@media (max-width: 900px) {
+    .guide-content-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.guide-section {
+    margin-bottom: 2.5rem;
+}
+
+.guide-section h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 1rem;
+}
+
+.guide-section p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.guide-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.guide-cta {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.guide-cta h3 {
+    margin-bottom: 0.5rem;
+}
+
+.guide-cta p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.sidebar-widget {
+    background: #1a1b21;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-widget h4 {
+    color: white;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.widget-list {
+    list-style: none;
+    padding: 0;
+}
+
+.widget-list li {
+    margin-bottom: 0.8rem;
+}
+
+.widget-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.widget-list a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.widget-list img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
