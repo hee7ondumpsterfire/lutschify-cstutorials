@@ -1,0 +1,251 @@
+.tactics-page {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.tactics-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    position: relative;
+    overflow: hidden;
+    border-left: 6px solid #3b82f6;
+}
+
+.hero-content {
+    max-width: 60%;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.hero-visual {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(59, 130, 246, 0.2);
+    border-radius: 50%;
+    animation: rotate 25s linear infinite reverse;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.visual-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 20px #3b82f6);
+}
+
+.tactics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tactics-card {
+    padding: 2.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tactics-card:hover {
+    transform: translateY(-8px);
+    border-color: #3b82f6;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.module-icon {
+    font-size: 2.5rem;
+}
+
+.difficulty-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.difficulty-tag.essential {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.difficulty-tag.intermediate {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+.difficulty-tag.advanced {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.difficulty-tag.practical {
+    background: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+}
+
+.tactics-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.tactics-card .description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.details-list {
+    list-style: none;
+    padding: 0;
+}
+
+.details-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.details-list li::before {
+    content: "◈";
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.tactics-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem;
+}
+
+.footer-info h3 {
+    margin-bottom: 0.5rem;
+    color: #3b82f6;
+}
+
+.footer-info p {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.footer-action {
+    text-align: right;
+}
+
+.footer-action p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.edit-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.8rem;
+}
+
+.edit-pill:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .tactics-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-visual {
+        width: 150px;
+        height: 150px;
+    }
+
+    .tactics-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-action {
+        text-align: center;
+    }
+}

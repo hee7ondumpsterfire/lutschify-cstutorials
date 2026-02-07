@@ -41,6 +41,16 @@ const EloGuideForm = ({ eloGuide, onClose }) => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="guide-form">
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem' }}>
+                        <div className="elo-badge" style={{ backgroundColor: formData.color }}>
+                            {formData.range}
+                        </div>
+                        {formData.percentage && (
+                            <div className="elo-percentage-tag" style={{ color: formData.color, fontSize: '0.9rem', fontWeight: '600', marginLeft: '1rem', marginTop: '0.4rem' }}>
+                                Top {formData.percentage} of players
+                            </div>
+                        )}
+                    </div>
                     <div className="form-group" style={{ marginBottom: '1rem' }}>
                         <label>Range Title</label>
                         <input
@@ -48,6 +58,16 @@ const EloGuideForm = ({ eloGuide, onClose }) => {
                             value={formData.title}
                             onChange={e => setFormData({ ...formData, title: e.target.value })}
                             required
+                        />
+                    </div>
+
+                    <div className="form-group" style={{ marginBottom: '1rem' }}>
+                        <label>Player Percentage</label>
+                        <input
+                            type="text"
+                            value={formData.percentage || ''}
+                            onChange={e => setFormData({ ...formData, percentage: e.target.value })}
+                            placeholder="e.g. 16.8%"
                         />
                     </div>
 

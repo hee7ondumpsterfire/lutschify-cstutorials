@@ -2,6 +2,8 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { tutorials as initialTutorials } from '../data/grenades';
 import { guides as initialGuides } from '../data/guides';
 import { eloRanges as initialEloGuides } from '../data/eloGuides';
+import { initialMovementModules } from '../data/movementData';
+import { initialTacticsModules } from '../data/tacticsData';
 
 const DataContext = createContext();
 
@@ -11,6 +13,8 @@ export const DataProvider = ({ children }) => {
     const [tutorials, setTutorials] = useState([]);
     const [guides, setGuides] = useState([]);
     const [eloGuides, setEloGuides] = useState([]);
+    const [movementModules, setMovementModules] = useState([]);
+    const [tacticsModules, setTacticsModules] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -35,13 +39,22 @@ export const DataProvider = ({ children }) => {
                 // No, simpler: Just Replace static with LocalStorage content if found, 
                 // OR initialize LocalStorage with Static if empty.
 
-                setTutorials(parsed.tutorials || parsed); // Handle migration if needed
+                const processedTutorials = (parsed.tutorials || parsed).map(t => ({
+                    ...t,
+                    status: t.status || 'approved'
+                }));
+
+                setTutorials(processedTutorials);
                 setGuides(parsed.guides || initialGuides);
                 setEloGuides(parsed.eloGuides || initialEloGuides);
+                setMovementModules(parsed.movementModules || initialMovementModules);
+                setTacticsModules(parsed.tacticsModules || initialTacticsModules);
             } else {
-                setTutorials(initialTutorials);
+                setTutorials(initialTutorials.map(t => ({ ...t, status: 'approved' })));
                 setGuides(initialGuides);
                 setEloGuides(initialEloGuides);
+                setMovementModules(initialMovementModules);
+                setTacticsModules(initialTacticsModules);
             }
         } catch (e) {
             console.error("Failed to load data", e);
@@ -50,26 +63,41 @@ export const DataProvider = ({ children }) => {
         setIsLoading(false);
     };
 
-    const saveToStorage = (newTutorials, newGuides, newEloGuides) => {
+    const saveToStorage = (newTutorials, newGuides, newEloGuides, newMovementModules, newTacticsModules) => {
         const payload = {
             tutorials: newTutorials || tutorials,
             guides: newGuides || guides,
-            eloGuides: newEloGuides || eloGuides
+            eloGuides: newEloGuides || eloGuides,
+            movementModules: newMovementModules || movementModules,
+            tacticsModules: newTacticsModules || tacticsModules
         };
         localStorage.setItem('lutsch1fy_data', JSON.stringify(payload));
         if (newTutorials) setTutorials(newTutorials);
         if (newGuides) setGuides(newGuides);
         if (newEloGuides) setEloGuides(newEloGuides);
+        if (newMovementModules) setMovementModules(newMovementModules);
+        if (newTacticsModules) setTacticsModules(newTacticsModules);
     };
 
     const addTutorial = (tutorial) => {
-        const newTutorials = [...tutorials, { ...tutorial, id: crypto.randomUUID() }];
+        const newTutorials = [...tutorials, {
+            ...tutorial,
+            id: crypto.randomUUID(),
+            status: tutorial.status || 'approved' // Default to approved (for admin use)
+        }];
         saveToStorage(newTutorials, null);
     };
 
     const updateTutorial = (id, updates) => {
         const newTutorials = tutorials.map(t =>
             t.id === id ? { ...t, ...updates } : t
+        );
+        saveToStorage(newTutorials, null);
+    };
+
+    const approveTutorial = (id) => {
+        const newTutorials = tutorials.map(t =>
+            t.id === id ? { ...t, status: 'approved' } : t
         );
         saveToStorage(newTutorials, null);
     };
@@ -93,7 +121,37 @@ export const DataProvider = ({ children }) => {
 
     const updateEloGuide = (eloGuide) => {
         const newEloGuides = eloGuides.map(g => g.id === eloGuide.id ? eloGuide : g);
-        saveToStorage(null, null, newEloGuides);
+        saveToStorage(null, null, newEloGuides, null);
+    };
+
+    const addMovementModule = (module) => {
+        const newModules = [...movementModules, { ...module, id: crypto.randomUUID() }];
+        saveToStorage(null, null, null, newModules, null);
+    };
+
+    const updateMovementModule = (module) => {
+        const newModules = movementModules.map(m => m.id === module.id ? module : m);
+        saveToStorage(null, null, null, newModules, null);
+    };
+
+    const deleteMovementModule = (moduleId) => {
+        const newModules = movementModules.filter(m => m.id !== moduleId);
+        saveToStorage(null, null, null, newModules, null);
+    };
+
+    const addTacticsModule = (module) => {
+        const newModules = [...tacticsModules, { ...module, id: crypto.randomUUID() }];
+        saveToStorage(null, null, null, null, newModules);
+    };
+
+    const updateTacticsModule = (module) => {
+        const newModules = tacticsModules.map(m => m.id === module.id ? module : m);
+        saveToStorage(null, null, null, null, newModules);
+    };
+
+    const deleteTacticsModule = (moduleId) => {
+        const newModules = tacticsModules.filter(m => m.id !== moduleId);
+        saveToStorage(null, null, null, null, newModules);
     };
 
     const resetData = () => {
@@ -109,10 +167,19 @@ export const DataProvider = ({ children }) => {
             guides,
             addTutorial,
             updateTutorial,
+            approveTutorial,
             deleteTutorial,
             addGuide,
             eloGuides,
             updateEloGuide,
+            movementModules,
+            addMovementModule,
+            updateMovementModule,
+            deleteMovementModule,
+            tacticsModules,
+            addTacticsModule,
+            updateTacticsModule,
+            deleteTacticsModule,
             resetData,
             isLoading
         }}>

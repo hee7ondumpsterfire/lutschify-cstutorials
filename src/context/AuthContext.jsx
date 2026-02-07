@@ -18,8 +18,10 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (password) => {
-        // Hardcoded password for demo purposes
-        if (password === 'admin123' || password === 'lutsch') {
+        // Use environment variable for the admin password
+        const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+
+        if (password === adminPassword && adminPassword) {
             setIsAdmin(true);
             localStorage.setItem('lutsch1fy_admin_session', 'true');
             return true;

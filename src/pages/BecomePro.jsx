@@ -48,6 +48,12 @@ const BecomePro = () => {
                         <div className="elo-badge" style={{ backgroundColor: selectedElo.color }}>
                             {selectedElo.range}
                         </div>
+                        {selectedElo.percentage && (
+                            <div className="elo-percentage-tag" style={{ color: selectedElo.color, fontSize: '0.9rem', fontWeight: '600', marginLeft: '1rem', marginTop: '0.4rem' }}>
+                                Top {selectedElo.percentage} of players
+                            </div>
+                        )}
+                        <div style={{ flex: 1 }}></div>
                         {isAdmin && (
                             <button
                                 onClick={() => setIsEditModalOpen(true)}

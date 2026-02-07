@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { maps } from '../data/maps';
 
@@ -6,7 +6,6 @@ import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
 import './HomeCS.css';
 import GuideForm from '../components/GuideForm';
-import { useState } from 'react';
 
 const Home = () => {
     const { tutorials, guides } = useData();
@@ -16,10 +15,12 @@ const Home = () => {
     // Stats calculation
     const stats = useMemo(() => {
         if (!tutorials) return { smoke: 0, molotov: 0, flash: 0, he: 0 };
-        return tutorials.reduce((acc, curr) => {
-            acc[curr.type] = (acc[curr.type] || 0) + 1;
-            return acc;
-        }, { smoke: 0, molotov: 0, flash: 0, he: 0 });
+        return tutorials
+            .filter(t => t.status === 'approved')
+            .reduce((acc, curr) => {
+                acc[curr.type] = (acc[curr.type] || 0) + 1;
+                return acc;
+            }, { smoke: 0, molotov: 0, flash: 0, he: 0 });
     }, [tutorials]);
 
     const activeMaps = maps.filter(m => m.active);
@@ -44,7 +45,7 @@ const Home = () => {
                                     </div>
                                     <div className="map-name-cs">{map.name}</div>
                                     <div className="map-count-cs">
-                                        {tutorials?.filter(t => t.mapId === map.id).length || 0} nades
+                                        {tutorials?.filter(t => t.mapId === map.id && t.status === 'approved').length || 0} nades
                                     </div>
                                 </div>
                             </Link>
@@ -67,19 +68,23 @@ const Home = () => {
                         <p className="sidebar-text">
                             If you want to make sure your window smoke on mirage is on point without risking your mates to peek - this is your place to be.
                         </p>
-
-                        <div className="sidebar-links">
-                            <Link to="/admin" className="sidebar-link">Login to Admin</Link>
-                            {/* In real app: <a href="#" className="sidebar-link">★ Favourites</a> */}
-                            <a href="#" className="sidebar-link">+ Submit nade</a>
-                        </div>
                     </div>
 
                     <div className="sidebar-section">
+                        <h3>Community</h3>
+                        <p className="sidebar-text">Found a new lineup? Share it with the community!</p>
+                        <Link to="/submit-nade" className="btn btn-primary" style={{ width: '100%', marginBottom: '1rem' }}>+ Submit nade</Link>
+                    </div>
+
+                    <div className="sidebar-section">
+                        <p className="sidebar-text" style={{ fontSize: '0.85rem', marginBottom: '1rem' }}>
+                            If you appreciate lutsch1fy and can afford it - please consider buying me a coffee with the button below. Thank you!
+                        </p>
                         <div className="sidebar-links">
-                            <a href="#" className="sidebar-link">👾 Join us on Discord</a>
-                            <a href="#" className="sidebar-link">☕ Support us on Patreon</a>
-                            <a href="#" className="sidebar-link">📺 Subscribe on YouTube</a>
+                            <a href="https://buymeacoffee.com/maxapps" target="_blank" rel="noopener noreferrer" className="bmc-custom-button">
+                                <span className="bmc-icon">🙂</span>
+                                <span className="bmc-text">Buy me a coffee</span>
+                            </a>
                         </div>
                     </div>
 

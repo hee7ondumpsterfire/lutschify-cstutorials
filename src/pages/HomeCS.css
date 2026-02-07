@@ -200,3 +200,38 @@
 .sec-map-link:hover {
     color: white;
 }
+
+/* Buy Me a Coffee Custom Button */
+.bmc-custom-button {
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 12px;
+    background-color: #BD5FFF;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 1px solid #000000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    width: fit-content;
+}
+
+.bmc-custom-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    opacity: 0.95;
+}
+
+.bmc-icon {
+    font-size: 1.4rem;
+    margin-right: 10px;
+}
+
+.bmc-text {
+    color: #ffffff;
+}

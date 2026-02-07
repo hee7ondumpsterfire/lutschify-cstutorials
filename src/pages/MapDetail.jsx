@@ -25,7 +25,7 @@ const MapDetail = () => {
     const mapData = maps.find(m => m.id === mapId);
 
     const mapTutorials = useMemo(() => {
-        let results = tutorials.filter(t => t.mapId === mapId && t.type === filter);
+        let results = tutorials.filter(t => t.mapId === mapId && t.type === filter && t.status === 'approved');
 
         if (selectedTags.length > 0) {
             results = results.filter(t => {

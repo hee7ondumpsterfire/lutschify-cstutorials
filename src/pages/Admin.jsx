@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useData } from '../context/DataContext';
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 
 const Admin = () => {
     const { login, isAdmin, logout } = useAuth();
+    const { tutorials } = useData();
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
     const navigate = useNavigate();
+
+    const pendingCount = (tutorials || []).filter(t => t.status === 'pending').length;
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -24,9 +27,31 @@ const Admin = () => {
             <div className="container admin-container">
                 <h1>Admin Dashboard</h1>
                 <p>You are logged in as Admin.</p>
-                <div className="admin-actions">
+                <div className="admin-actions" style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+                    <button className="btn btn-primary" onClick={() => navigate('/admin/review')} style={{ position: 'relative' }}>
+                        Review Queue
+                        {pendingCount > 0 && (
+                            <span style={{
+                                position: 'absolute',
+                                top: '-10px',
+                                right: '-10px',
+                                background: '#ef4444',
+                                color: 'white',
+                                borderRadius: '50%',
+                                width: '22px',
+                                height: '22px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '0.75rem',
+                                border: '2px solid var(--bg-dark)'
+                            }}>
+                                {pendingCount}
+                            </span>
+                        )}
+                    </button>
+                    <button className="btn btn-primary" onClick={() => navigate('/training')}>Manage Grenades</button>
                     <button className="btn btn-outline" onClick={logout}>Logout</button>
-                    <button className="btn btn-primary" onClick={() => navigate('/training')}>Go to Training</button>
                 </div>
             </div>
         );
