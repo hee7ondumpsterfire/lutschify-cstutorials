@@ -3,7 +3,7 @@ export const guides = [
         id: 'dust2-guide',
         mapId: 'dust2',
         title: 'Dust 2 Map Guide',
-        author: 'lutsch1fy Team',
+        author: 'aura Team',
         lastUpdated: 'Feb 2026',
         sections: [
             {
@@ -30,7 +30,7 @@ export const guides = [
         id: 'mirage-guide',
         mapId: 'mirage',
         title: 'Mirage Map Guide',
-        author: 'lutsch1fy Team',
+        author: 'aura Team',
         lastUpdated: 'Jan 2026',
         sections: [
             {
@@ -42,7 +42,7 @@ export const guides = [
         id: 'anubis-guide',
         mapId: 'anubis',
         title: 'Anubis Map Guide',
-        author: 'lutsch1fy Team',
+        author: 'aura Team',
         lastUpdated: 'Jan 2026',
         sections: [
             {
@@ -63,7 +63,7 @@ export const guides = [
         id: 'ancient-guide',
         mapId: 'ancient',
         title: 'Ancient Map Guide',
-        author: 'lutsch1fy Team',
+        author: 'aura Team',
         lastUpdated: 'Jan 2026',
         sections: [
             {
@@ -80,7 +80,7 @@ export const guides = [
         id: 'inferno-guide',
         mapId: 'inferno',
         title: 'Inferno Map Guide',
-        author: 'lutsch1fy Team',
+        author: 'aura Team',
         lastUpdated: 'Feb 2026',
         sections: [
             {
@@ -101,7 +101,7 @@ export const guides = [
         id: 'train-guide',
         mapId: 'train',
         title: 'Train Map Guide',
-        author: 'lutsch1fy Team',
+        author: 'aura Team',
         lastUpdated: 'Feb 2026',
         sections: [
             {

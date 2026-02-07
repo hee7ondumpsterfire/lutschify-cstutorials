@@ -24,7 +24,16 @@ export const DataProvider = ({ children }) => {
     const loadData = () => {
         // Load local overrides
         try {
-            const storedData = localStorage.getItem('lutsch1fy_data');
+            let storedData = localStorage.getItem('aura_data');
+
+            // Backward compatibility / Migration
+            if (!storedData) {
+                storedData = localStorage.getItem('lutsch1fy_data');
+                if (storedData) {
+                    localStorage.setItem('aura_data', storedData);
+                }
+            }
+
             if (storedData) {
                 const parsed = JSON.parse(storedData);
                 // Merge strategies could be complex, but for now we'll just use the stored data 
@@ -71,7 +80,7 @@ export const DataProvider = ({ children }) => {
             movementModules: newMovementModules || movementModules,
             tacticsModules: newTacticsModules || tacticsModules
         };
-        localStorage.setItem('lutsch1fy_data', JSON.stringify(payload));
+        localStorage.setItem('aura_data', JSON.stringify(payload));
         if (newTutorials) setTutorials(newTutorials);
         if (newGuides) setGuides(newGuides);
         if (newEloGuides) setEloGuides(newEloGuides);
@@ -156,6 +165,7 @@ export const DataProvider = ({ children }) => {
 
     const resetData = () => {
         if (window.confirm('Are you sure? This will reset all your custom grenades to the default app state.')) {
+            localStorage.removeItem('aura_data');
             localStorage.removeItem('lutsch1fy_data');
             setTutorials(initialTutorials);
         }

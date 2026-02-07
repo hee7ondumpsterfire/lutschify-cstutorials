@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/review
+
+Sitemap: https://aura.maxapps.org/sitemap.xml

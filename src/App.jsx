@@ -13,6 +13,7 @@ import BecomePro from './pages/BecomePro';
 import Guides from './pages/Guides';
 import Tactics from './pages/Tactics';
 import Movement from './pages/Movement';
+import Impressum from './pages/Impressum';
 
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
@@ -37,6 +38,7 @@ function App() {
             <Route path="submit-nade" element={<GrenadeForm isPublic={true} />} />
             <Route path="admin/grenade/add/:mapId" element={<GrenadeForm />} />
             <Route path="admin/grenade/edit/:grenadeId" element={<GrenadeForm />} />
+            <Route path="impressum" element={<Impressum />} />
           </Route>
         </Routes>
       </DataProvider>

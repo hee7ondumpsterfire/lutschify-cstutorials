@@ -24,6 +24,12 @@ const MapDetail = () => {
 
     const mapData = maps.find(m => m.id === mapId);
 
+    React.useEffect(() => {
+        if (mapData) {
+            document.title = `${mapData.name} Grenade Lineups & Tactics | aura`;
+        }
+    }, [mapData]);
+
     const mapTutorials = useMemo(() => {
         let results = tutorials.filter(t => t.mapId === mapId && t.type === filter && t.status === 'approved');
 

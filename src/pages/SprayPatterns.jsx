@@ -11,6 +11,10 @@ const SprayPatterns = () => {
 
     const selectedWeapon = weapons.find(w => w.id === selectedWeaponId) || weapons[0];
 
+    React.useEffect(() => {
+        document.title = `${selectedWeapon.name} Recoil Pattern & Spray Control | aura`;
+    }, [selectedWeapon]);
+
     // Reset playback when weapon changes
     const handleWeaponSelect = (id) => {
         setSelectedWeaponId(id);

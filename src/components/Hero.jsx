@@ -9,7 +9,7 @@ const Hero = () => {
                 <div className="hero-content">
                     <div className="hero-badge">Alphakek v.01337</div>
                     <h1>
-                        lutsch1fy
+                        aura
                     </h1>
                     <p className="hero-subtitle">
                         "can you check the window smoke bro?"

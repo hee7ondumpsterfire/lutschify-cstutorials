@@ -26,12 +26,10 @@
 }
 
 .brand {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
     white-space: nowrap;
 }
 
@@ -47,18 +45,28 @@
     }
 }
 
-.brand-icon {
-    height: 32px;
-    width: 32px;
-    margin-right: 0.5rem;
+.brand-logo {
+    height: 38px;
+    width: auto;
     object-fit: contain;
 }
 
+.brand-tagline {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
 @media (max-width: 768px) {
-    .brand-icon {
-        height: 24px;
-        width: 24px;
-        margin-right: 0.3rem;
+    .brand-logo {
+        height: 28px;
+    }
+
+    .brand-tagline {
+        font-size: 0.55rem;
     }
 }
 
@@ -191,9 +199,20 @@
 }
 
 .main-footer {
-    padding: 2rem 0;
+    padding: 3rem 0;
     text-align: center;
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin-top: 4rem;
+}
+
+.hover-link {
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.hover-link:hover {
+    color: var(--text-primary);
+    opacity: 1;
 }

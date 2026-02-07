@@ -16,8 +16,8 @@ const Layout = () => {
             <header className="main-header glass-panel">
                 <div className="container header-content">
                     <Link to="/" className="brand">
-                        <img src="/favicon.png" alt="lutsch1fy" className="brand-icon" />
-                        lutsch1fy
+                        <img src="/aura logo.png" alt="aura" className="brand-logo" />
+                        <span className="brand-tagline">Counter Strike training excellence</span>
                     </Link>
 
                     <nav className="main-nav">
@@ -85,11 +85,16 @@ const Layout = () => {
             </main>
 
             <footer className="main-footer">
-                <div className="container">
-                    <p>
-                        &copy; {new Date().getFullYear()} lutsch1fy. Build for gaylords.
-                        {!isAdmin && <Link to="/admin" style={{ marginLeft: '1rem', opacity: 0.3, textDecoration: 'none', color: 'inherit' }}>Admin</Link>}
+                <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                    <p style={{ opacity: 0.8 }}>
+                        &copy; {new Date().getFullYear()} aura. Build your aura.
                     </p>
+                    <div className="footer-links" style={{ display: 'flex', gap: '1.5rem', opacity: 0.5 }}>
+                        <Link to="/impressum" className="hover-link">Impressum</Link>
+                        <Link to="/admin" className="hover-link">
+                            {isAdmin ? 'Dashboard' : 'Admin'}
+                        </Link>
+                    </div>
                 </div>
             </footer>
         </div>

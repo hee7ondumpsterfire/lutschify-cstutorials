@@ -12,6 +12,10 @@ const Home = () => {
     const { isAdmin } = useAuth();
     const [isGuideFormOpen, setIsGuideFormOpen] = useState(false);
 
+    useEffect(() => {
+        document.title = 'aura | CS2 Grenade Lineups & Tactics Hub';
+    }, []);
+
     // Stats calculation
     const stats = useMemo(() => {
         if (!tutorials) return { smoke: 0, molotov: 0, flash: 0, he: 0 };
@@ -64,7 +68,7 @@ const Home = () => {
                 {/* Right Sidebar */}
                 <div className="csnades-sidebar">
                     <div className="sidebar-section">
-                        <h3>Welcome to lutschify, the #2 place to learn Counter Strike 2 grenade lineups and become a respected carry player.</h3>
+                        <h3>Welcome to aura, the perfect place to learn Counter Strike 2 skills, tactics, grenade lineups and become a respected team player, able to carry whenever needed.</h3>
                         <p className="sidebar-text">
                             If you want to make sure your window smoke on mirage is on point without risking your mates to peek - this is your place to be.
                         </p>
@@ -78,7 +82,7 @@ const Home = () => {
 
                     <div className="sidebar-section">
                         <p className="sidebar-text" style={{ fontSize: '0.85rem', marginBottom: '1rem' }}>
-                            If you appreciate lutsch1fy and can afford it - please consider buying me a coffee with the button below. Thank you!
+                            If you appreciate aura and can afford it - please consider buying me a coffee with the button below. Thank you!
                         </p>
                         <div className="sidebar-links">
                             <a href="https://buymeacoffee.com/maxapps" target="_blank" rel="noopener noreferrer" className="bmc-custom-button">

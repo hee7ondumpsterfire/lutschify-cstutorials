@@ -8,6 +8,7 @@ const Admin = () => {
     const { login, isAdmin, logout } = useAuth();
     const { tutorials } = useData();
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
     const navigate = useNavigate();
 
     const pendingCount = (tutorials || []).filter(t => t.status === 'pending').length;

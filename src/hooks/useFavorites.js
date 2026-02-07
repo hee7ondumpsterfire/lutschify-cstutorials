@@ -4,10 +4,13 @@ export const useFavorites = () => {
     const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        const stored = localStorage.getItem('lutsch1fy_favorites');
+        const stored = localStorage.getItem('aura_favorites') || localStorage.getItem('lutsch1fy_favorites');
         if (stored) {
             try {
                 setFavorites(JSON.parse(stored));
+                if (!localStorage.getItem('aura_favorites')) {
+                    localStorage.setItem('aura_favorites', stored);
+                }
             } catch (e) {
                 console.error('Failed to parse favorites', e);
             }
@@ -20,7 +23,7 @@ export const useFavorites = () => {
                 ? prev.filter(fId => fId !== id)
                 : [...prev, id];
 
-            localStorage.setItem('lutsch1fy_favorites', JSON.stringify(newFavorites));
+            localStorage.setItem('aura_favorites', JSON.stringify(newFavorites));
             return newFavorites;
         });
     };

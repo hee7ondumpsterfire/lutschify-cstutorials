@@ -10,6 +10,14 @@ const GuideDetail = () => {
     const mapData = maps.find(m => m.id === mapId);
     const guide = guides.find(g => g.mapId === mapId);
 
+    React.useEffect(() => {
+        if (guide) {
+            document.title = `${guide.title} | aura CS2 Hub`;
+        } else if (mapData) {
+            document.title = `${mapData.name} Map Guide | aura CS2 Hub`;
+        }
+    }, [guide, mapData]);
+
     if (!mapData) return <div className="container" style={{ paddingTop: '4rem' }}>Map not found</div>;
 
     return (

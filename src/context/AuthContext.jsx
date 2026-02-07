@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         // Check for existing session
-        const session = localStorage.getItem('lutsch1fy_admin_session');
+        const session = localStorage.getItem('aura_admin_session');
         if (session === 'true') {
             setIsAdmin(true);
         }
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
         if (password === adminPassword && adminPassword) {
             setIsAdmin(true);
-            localStorage.setItem('lutsch1fy_admin_session', 'true');
+            localStorage.setItem('aura_admin_session', 'true');
             return true;
         }
         return false;
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setIsAdmin(false);
-        localStorage.removeItem('lutsch1fy_admin_session');
+        localStorage.removeItem('aura_admin_session');
     };
 
     return (
